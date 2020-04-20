@@ -1,0 +1,66 @@
+{
+  "name": "will-it-play",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest",
+    "validate": "yarn test && yarn lint",
+    "release": "npx np"
+  },
+  "keywords": [],
+  "files": [
+    "lib/*.js",
+    "lib/index.d.ts"
+  ],
+  "author": {
+    "name": "David Brownman",
+    "email": "beamneocube@gmail.com",
+    "url": "https://davidbrownman.com"
+  },
+  "license": "ISC",
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "chalk": "4.0.0",
+    "commander": "5.0.0",
+    "fluent-ffmpeg": "2.1.2",
+    "ora": "4.0.3"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "2.1.14",
+    "@types/jest": "25.2.1",
+    "@typescript-eslint/eslint-plugin": "2.28.0",
+    "@typescript-eslint/parser": "2.28.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.1",
+    "eslint-config-standard-with-typescript": "15.0.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jest": "23.8.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "jest": "25.3.0",
+    "prettier": "2.0.4",
+    "ts-jest": "25.4.0",
+    "typescript": "3.8.3"
+  }
+}
