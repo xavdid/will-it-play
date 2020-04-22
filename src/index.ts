@@ -1,5 +1,5 @@
 import { ffprobe, FfprobeData, FfprobeStream } from 'fluent-ffmpeg'
-// import Ffmpeg = require('fluent-ffmpeg')
+import { boolIfInfo } from './utils'
 
 import { extname } from 'path'
 
@@ -21,8 +21,8 @@ const knownInfo = {
 /**
  * given a path to a file, it returns ffmpeg info about that file
  */
-const fetchInfoForVideoAtPath = async (path: string): Promise<FfprobeData> =>
-  await new Promise((resolve, reject) => {
+const fetchInfoForVideoAtPath = async (path: string): Promise<FfprobeData> => {
+  return await new Promise((resolve, reject) => {
     ffprobe(path, (err, info) => {
       if (err) {
         reject(err)
@@ -30,14 +30,7 @@ const fetchInfoForVideoAtPath = async (path: string): Promise<FfprobeData> =>
       resolve(info)
     })
   })
-
-/**
- * return types will be a bool for definitely good/bad, but can also be undefined if we don't have definitive info
- */
-const boolIfInfo = (good: Set<string>, bad: Set<string>, value: string) => ({
-  value,
-  valid: good.has(value) ? true : bad.has(value) ? false : undefined,
-})
+}
 
 const getCompatibilityInfoFromPath = (path: string) =>
   boolIfInfo(knownInfo.extension.good, knownInfo.extension.bad, extname(path))
@@ -71,25 +64,7 @@ const parseVideoInfo = (
   extension: getCompatibilityInfoFromPath(path),
 })
 
-fetchInfoForVideoAtPath(process.argv[2])
-  .then((info) => {
-    console.log(parseVideoInfo(process.argv[2], info))
-  })
-  .catch((err: Error) => {
-    if (err.message.toLowerCase().includes('cannot find ')) {
-      console.error(
-        'You may not have `ffmpeg` installed, make sure to install it!'
-      )
-    } else if (err.message.toLowerCase().includes('FFmpeg developers')) {
-      // errors are the entire output block. we really only want the first and last lines, which includes the helpful info in brief testing
-      const errorLines = err.message.trim().split('\n')
-      console.error(
-        `ERR: ${errorLines[0]}. More info is hopefully below.\n\n> ${
-          errorLines[errorLines.length - 1]
-        }`
-      )
-    } else {
-      console.error(err)
-    }
-    process.exitCode = 1
-  })
+export const willItPlay = async (path: string) => {
+  const info = await fetchInfoForVideoAtPath(path)
+  return parseVideoInfo(path, info)
+}
