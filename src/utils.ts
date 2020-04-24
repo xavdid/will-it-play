@@ -8,12 +8,12 @@ export const boolIfInfo = (
 ) => ({
   value,
   valid: good.has(value) ? true : bad.has(value) ? false : undefined,
-});
+})
 
 export interface ValidityInfo {
-  video: { valid?: boolean; value?: string };
-  audio: { valid?: boolean; value?: string };
-  extension: { valid?: boolean; value: string };
+  video: { valid?: boolean; value?: string }
+  audio: { valid?: boolean; value?: string }
+  extension: { valid?: boolean; value: string }
 }
 
 /**
@@ -25,14 +25,14 @@ export const videoWillPlay = ({
   audio: { valid: audioValid },
   extension: { valid: extensionValid },
 }: ValidityInfo): boolean | undefined => {
-  const validityResults = [videoValid, audioValid, extensionValid];
+  const validityResults = [videoValid, audioValid, extensionValid]
   if (validityResults.every(Boolean)) {
-    return true;
+    return true
   }
 
   if (validityResults.some((r) => r === false)) {
-    return false;
+    return false
   }
 
-  return undefined;
-};
+  return undefined
+}

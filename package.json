@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "bin": "lib/cli.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
@@ -24,6 +25,7 @@
   },
   "license": "ISC",
   "jest": {
+    "verbose": true,
     "roots": [
       "<rootDir>/src"
     ],
@@ -43,8 +45,7 @@
     "chalk": "4.0.0",
     "cli-table3": "0.6.0",
     "commander": "5.0.0",
-    "fluent-ffmpeg": "2.1.2",
-    "ora": "4.0.3"
+    "fluent-ffmpeg": "2.1.2"
   },
   "devDependencies": {
     "@types/fluent-ffmpeg": "2.1.14",
@@ -60,7 +61,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
     "jest": "25.3.0",
-    "prettier": "2.0.4",
+    "prettier": "2.0.5",
     "ts-jest": "25.4.0",
     "typescript": "3.8.3"
   }

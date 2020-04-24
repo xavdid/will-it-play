@@ -2,6 +2,7 @@
 
 import { basename } from 'path'
 import { ValidityInfo, willItPlay } from './index'
+import { bold } from 'chalk'
 import commander = require('commander')
 import Table = require('cli-table3')
 
@@ -15,7 +16,7 @@ const emojiResult = (willPlay: boolean | undefined) =>
 
 const formatDetailedResult = (info: ValidityInfo) => {
   const table = new Table()
-  table.push(['Factor', 'Value', 'Valid?'])
+  table.push(['Factor', 'Value', 'Valid?'].map((val) => bold(val)))
   Object.entries(info).forEach(([factor, { valid, value }]) => {
     table.push([factor, value || 'unknown', emojiResult(valid)])
   })

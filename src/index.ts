@@ -4,6 +4,7 @@ import { boolIfInfo, ValidityInfo, videoWillPlay } from './utils'
 import { extname } from 'path'
 export { ValidityInfo } from './utils'
 
+// see: https://manuals.playstation.net/document/en/ps4/music/mp_format_m.html
 const knownInfo = {
   video: {
     good: new Set(['h264', 'mpeg4']),
@@ -33,9 +34,18 @@ const fetchInfoForVideoAtPath = async (path: string): Promise<FfprobeData> => {
   })
 }
 
-const getCompatibilityInfoFromPath = (path: string) =>
-  boolIfInfo(knownInfo.extension.good, knownInfo.extension.bad, extname(path))
-
+// this one is a little special - there's a short list of extensions that work, so we can just do a bool
+const getCompatibilityInfoFromPath = (path: string) => {
+  const res = boolIfInfo(
+    knownInfo.extension.good,
+    knownInfo.extension.bad,
+    extname(path)
+  )
+  if (!res.valid) {
+    res.valid = false
+  }
+  return res
+}
 const getCompatibilityInfoFromStream = (
   type: 'audio' | 'video',
   streams: FfprobeStream[]
