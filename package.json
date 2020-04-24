@@ -15,7 +15,7 @@
   "keywords": [],
   "files": [
     "lib/*.js",
-    "lib/index.d.ts"
+    "lib/*.d.ts"
   ],
   "author": {
     "name": "David Brownman",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "chalk": "4.0.0",
+    "cli-table3": "0.6.0",
     "commander": "5.0.0",
     "fluent-ffmpeg": "2.1.2",
     "ora": "4.0.3"

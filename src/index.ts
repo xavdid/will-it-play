@@ -1,7 +1,8 @@
 import { ffprobe, FfprobeData, FfprobeStream } from 'fluent-ffmpeg'
-import { boolIfInfo } from './utils'
+import { boolIfInfo, ValidityInfo, videoWillPlay } from './utils'
 
 import { extname } from 'path'
+export { ValidityInfo } from './utils'
 
 const knownInfo = {
   video: {
@@ -54,17 +55,14 @@ const getCompatibilityInfoFromStream = (
 const parseVideoInfo = (
   path: string,
   { streams }: FfprobeData
-): {
-  video: { valid?: boolean; value?: string }
-  audio: { valid?: boolean; value?: string }
-  extension: { valid?: boolean; value: string }
-} => ({
+): ValidityInfo => ({
   video: getCompatibilityInfoFromStream('video', streams),
   audio: getCompatibilityInfoFromStream('audio', streams),
   extension: getCompatibilityInfoFromPath(path),
 })
 
 export const willItPlay = async (path: string) => {
-  const info = await fetchInfoForVideoAtPath(path)
-  return parseVideoInfo(path, info)
+  const probeData = await fetchInfoForVideoAtPath(path)
+  const info = parseVideoInfo(path, probeData)
+  return { videoWillPlay: videoWillPlay(info), info }
 }
