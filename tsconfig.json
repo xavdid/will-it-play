@@ -7,8 +7,7 @@
     "target": "es2018",
     "lib": ["es2018"],
     "strict": true,
-    "resolveJsonModule": true
     // "jsx": "react"
-    // "declaration": true
+    "declaration": true
   }
 }

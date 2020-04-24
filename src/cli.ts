@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { basename } from 'path'
 import { ValidityInfo, willItPlay } from './index'
 import commander = require('commander')
