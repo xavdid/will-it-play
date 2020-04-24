@@ -2,6 +2,8 @@
 
 I was tired of having local home video files not play on my **Playstation 4**. Now at least I'll know that's the case before I get all the way to the console w/ a flash drive.
 
+![npm](https://img.shields.io/npm/v/will-it-play)
+
 ## Installation
 
 ```
@@ -25,6 +27,9 @@ raindrops-bad-video.ogv: ❌
 ```
 
 There's also detailed mode, which tells you why a video will or won't play:
+
+<!-- the below looks funny because GH turns the warning sign into plain text, changing the spacing -->
+<!-- of course, npm handles it in a more expected fashion. -->
 
 ```
 % will-it-play ~/Desktop/raindrops-bad-video.ogv -d
