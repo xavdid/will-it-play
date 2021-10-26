@@ -51,7 +51,7 @@ const main = async () => {
   results.forEach(({ path, result }) => {
     console.log(
       `${basename(path)}: ${emojiResult(result.videoWillPlay)} ${
-        program.detailed ? `\n${formatDetailedResult(result.info)}` : ''
+        program.opts().detailed ? `\n${formatDetailedResult(result.info)}` : ''
       }\n`
     )
   })

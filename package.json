@@ -25,8 +25,9 @@
   "author": {
     "name": "David Brownman",
     "email": "beamneocube@gmail.com",
-    "url": "https://davidbrownman.com"
+    "url": "https://xavd.id"
   },
+  "repository": "github:xavdid/will-it-play",
   "license": "ISC",
   "jest": {
     "verbose": true,
