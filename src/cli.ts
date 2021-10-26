@@ -31,7 +31,7 @@ program
   .version(version)
   .usage('PATHS...')
   .option('-d, --detailed', 'get detailed video info')
-  .description('Find out if a given video file will play on a PS4')
+  .description('Find out if a given video file will play on a PS5/4')
   .parse(process.argv)
 
 const main = async () => {
