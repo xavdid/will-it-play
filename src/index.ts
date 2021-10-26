@@ -5,9 +5,10 @@ import { extname } from 'path'
 export { ValidityInfo } from './utils'
 
 // see: https://manuals.playstation.net/document/en/ps4/music/mp_format_m.html
+// and: https://www.playstation.com/en-us/support/hardware/play-video-music-discs-usb-drives/#video
 const knownInfo = {
   video: {
-    good: new Set(['h264', 'mpeg4']),
+    good: new Set(['h264', 'mpeg4', 'vp9']),
     bad: new Set<string>(),
   },
   audio: {

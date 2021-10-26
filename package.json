@@ -1,6 +1,6 @@
 {
   "name": "will-it-play",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -13,7 +13,11 @@
     "validate": "yarn test && yarn lint",
     "release": "npx np"
   },
-  "keywords": [],
+  "keywords": [
+    "playstaion",
+    "ps5",
+    "ps4"
+  ],
   "files": [
     "lib/*.js",
     "lib/*.d.ts"
